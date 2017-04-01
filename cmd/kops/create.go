@@ -37,6 +37,7 @@ import (
 
 type CreateOptions struct {
 	resource.FilenameOptions
+	Yes bool
 }
 
 func NewCmdCreate(f *util.Factory, out io.Writer) *cobra.Command {
@@ -56,6 +57,7 @@ func NewCmdCreate(f *util.Factory, out io.Writer) *cobra.Command {
 		},
 	}
 
+	cmd.Flags().BoolVarP(&options.Yes, "yes", "y", false, "Specify --yes to immediately create")
 	cmd.Flags().StringSliceVarP(&options.Filenames, "filename", "f", options.Filenames, "Filename to use to create the resource")
 	//usage := "to use to create the resource"
 	//cmdutil.AddFilenameOptionFlags(cmd, options, usage)
